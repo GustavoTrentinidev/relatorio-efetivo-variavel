@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        {{ficha}}
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { api } from "@/plugins/axios"
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
+    data(){
+      return {
+        ficha: ''
+      }
+    },
+    mounted(){
+      this.getFicha()
+    },
+    methods: {
+      async getFicha(){
+        const {data} = await api.get('ficha')
+        this.ficha = data
+      }
+    }
 }
 </script>
