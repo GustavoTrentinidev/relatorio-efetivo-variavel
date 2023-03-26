@@ -18,7 +18,7 @@ class FATD(models.Model):
     ]
     punicao = models.CharField(max_length=50, choices=punicoes_possiveis, blank=False)
     descricao = models.CharField(max_length=200, blank=False)
-    ficha = models.ManyToManyField(Ficha, related_name='fatd')
+    ficha = models.ForeignKey(Ficha, on_delete=models.CASCADE, related_name='fatd')
     data = models.DateField(default=date, blank=True, null=True)
 
     def __str__(self):

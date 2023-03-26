@@ -16,7 +16,7 @@ class FatoObservado(models.Model):
     fator = models.CharField(choices=fatores_possiveis, blank=False, max_length=8)
     motivo = models.CharField(max_length=40, null=False)
     descricao = models.CharField(max_length=200, null=False)
-    ficha = models.ManyToManyField(Ficha, related_name='fo')
+    ficha = models.ForeignKey(Ficha, on_delete=models.CASCADE, related_name='fo')
     data = models.DateField(default=date, blank=True, null=True)
 
     def __str__(self):
