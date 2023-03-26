@@ -1,12 +1,14 @@
 from django.db import models
 from datetime import datetime
 from core.models import Ficha
+from django.contrib.auth import get_user_model
 
 
 date = str(datetime.now()).split(' ')[0]
 
 
 class FATD(models.Model):
+    aplicador = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='fatds')
     punicoes_possiveis = [
         ('Advertência', 'Advertência'),
         ('Repreensão', 'Repreensão'),
