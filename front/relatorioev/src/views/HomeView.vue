@@ -1,12 +1,17 @@
 <template>
-    <div>
+    <div class="main">
+      <LogoRelatorioVue/>
+      <InputPesquisa/>
         {{ficha}}
     </div>
 </template>
 
 <script>
 import { api } from "@/plugins/axios"
+import LogoRelatorioVue from '../components/LogoRelatorio.vue'
+import InputPesquisa from '../components/InputPesquisa.vue'
 export default {
+    components: {LogoRelatorioVue, InputPesquisa},
     data(){
       return {
         ficha: ''
@@ -23,3 +28,16 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+  gap: 10px;
+}
+
+
+
+</style>
