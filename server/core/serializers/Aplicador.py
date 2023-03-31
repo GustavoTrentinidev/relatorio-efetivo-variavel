@@ -8,9 +8,9 @@ class AplicadorSerializer(ModelSerializer):
         fields = (
                 "username",
                 "password",
-                "nomeGuerra",
+                "nome_guerra",
                 "numero",
                 "om",
-                "nomeCompleto",
+                "nome_completo",
                 "grau_hieq"
             )
