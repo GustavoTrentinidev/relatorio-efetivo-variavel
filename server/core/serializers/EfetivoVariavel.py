@@ -1,8 +1,10 @@
 from rest_framework.serializers import ModelSerializer
+from drf_extra_fields.fields import Base64ImageField
 from core.models import EfetivoVariavel, Ficha
 
 
 class EfetivoVariavelSerializer(ModelSerializer):
+    foto = Base64ImageField()
     class Meta:
         model = EfetivoVariavel
         fields = "__all__"

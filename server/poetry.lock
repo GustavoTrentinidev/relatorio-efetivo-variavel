@@ -156,6 +156,25 @@ python-jose = ["python-jose (==3.3.0)"]
 test = ["cryptography", "pytest", "pytest-cov", "pytest-django", "pytest-xdist", "tox"]
 
 [[package]]
+name = "drf-extra-fields"
+version = "3.4.1"
+description = "Additional fields for Django Rest Framework."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "drf-extra-fields-3.4.1.tar.gz", hash = "sha256:54df0bef56c38ec7efb40e146ada42fa734b5087e45e9e54b2fd23baccc41466"},
+    {file = "drf_extra_fields-3.4.1-py3-none-any.whl", hash = "sha256:a11aeecc85847b0acda6ce57bb144c584c8ebb43ecdf989d8caa7bb130090885"},
+]
+
+[package.dependencies]
+Django = ">=2.2"
+djangorestframework = ">=3.9.2"
+
+[package.extras]
+base64imagefield = ["Pillow (>=6.2.1)"]
+
+[[package]]
 name = "jmespath"
 version = "1.0.1"
 description = "JSON Matching Expressions"
@@ -298,4 +317,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "537758b445acf4b92d307a779de74cafa81819651385749711b52d383d71871f"
+content-hash = "7d4993c7192628ee4cd337b2f79bbac106cd421df168b8bf2f836a1fd13bc38c"
