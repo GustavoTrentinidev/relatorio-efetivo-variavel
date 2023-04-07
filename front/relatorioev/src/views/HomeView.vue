@@ -5,7 +5,7 @@
       <InputPesquisa @mudarValorBusca="getComNovoValor"/>
       <EvResultado :efetivos="evs" @botaoClicado="abrirModalAction"/>
     </div>
-    <PopUpEv :modalAberto="modalAberto" @fecharModal="fecharModalAction"/>
+    <PopUpEv :modalAberto="modalAberto" @fecharModal="fecharModalAction" :evFichaID="idFichaEvSelecionado"/>
   </div>
 </template>
 
@@ -20,7 +20,8 @@ export default {
     data(){
       return {
         evs: [],
-        modalAberto: false
+        modalAberto: false,
+        idFichaEvSelecionado: 0
       }
     },
     mounted(){
@@ -35,9 +36,9 @@ export default {
         this.getEv(novoValor)
         console.log(novoValor)
       },
-      abrirModalAction(evID){
-        console.log('clicado', evID)
+      abrirModalAction(evFichaID){
         this.modalAberto = true
+        this.idFichaEvSelecionado = evFichaID
       },
       fecharModalAction(){
         this.modalAberto = false

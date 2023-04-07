@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <div class="botao-informacoes" @click="$emit('botaoClicado', ev.id)">
+      <div class="botao-informacoes" @click="$emit('botaoClicado', ev.ficha)">
         <img class="icon-botao" src="../assets/plus.png"/>
         <div class="texto-botao">Informações</div>
       </div>

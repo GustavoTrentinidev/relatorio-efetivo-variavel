@@ -7,7 +7,20 @@ class EfetivoVariavelSerializer(ModelSerializer):
     foto = Base64ImageField()
     class Meta:
         model = EfetivoVariavel
-        fields = "__all__"
+        fields = (
+            "nome_guerra",
+            "numero",
+            "cpf",
+            "om",
+            "nome_completo",
+            "tipo_sanguineo",
+            "grau_hieq",
+            "nome_mae",
+            "nome_pai",
+            "local_nascimento",
+            "foto",
+            "ficha"
+        )
 
     def create(self, validated_data):
         efetivoev = EfetivoVariavel.objects.create(**validated_data)
