@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <div class="botao-informacoes">
+      <div class="botao-informacoes" @click="$emit('botaoClicado', ev.id)">
         <img class="icon-botao" src="../assets/plus.png"/>
         <div class="texto-botao">Informações</div>
       </div>
@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .resultados{
   width: 50%;
   display: flex;
