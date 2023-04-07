@@ -1,8 +1,8 @@
 <template>
     <div class="main">
       <LogoRelatorioVue/>
-      <InputPesquisa/>
-        {{ficha}}
+      <InputPesquisa @mudarValorBusca="getComNovoValor"/>
+      <EvResultado :efetivos="evs"/>
     </div>
 </template>
 
@@ -10,20 +10,25 @@
 import { api } from "@/plugins/axios"
 import LogoRelatorioVue from '../components/LogoRelatorio.vue'
 import InputPesquisa from '../components/InputPesquisa.vue'
+import EvResultado from '../components/EvResultado.vue'
 export default {
-    components: {LogoRelatorioVue, InputPesquisa},
+    components: {LogoRelatorioVue, InputPesquisa, EvResultado},
     data(){
       return {
-        ficha: ''
+        evs: []
       }
     },
     mounted(){
-      this.getFicha()
+      this.getEv()
     },
     methods: {
-      async getFicha(){
-        const {data} = await api.get('ficha')
-        this.ficha = data
+      async getEv(valor=''){
+        const {data} = await api.get(`efetivovariavel/?search=${valor}`)
+        this.evs = data
+      },
+      getComNovoValor(novoValor){
+        this.getEv(novoValor)
+        console.log(novoValor)
       }
     }
 }
