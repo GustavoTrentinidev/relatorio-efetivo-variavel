@@ -1,6 +1,6 @@
 <template>
     <div class="input-row">
-        <input class="entrada-ev" type="text" placeholder="Busque por um EV">
+        <input class="entrada-ev" v-model="busca_ev" type="text" placeholder="Busque por um EV">
         <div class="icon-pesquisa-holder">
             <img class="icon-pesquisa" src="../assets/search.png" alt="">
         </div>
@@ -9,7 +9,21 @@
 
 <script>
 export default {
-
+  watch:{
+    busca_ev(){
+      this.emitirBusca()
+    }
+  },
+  data(){
+    return{
+      busca_ev: ''
+    }
+  },
+  methods: {
+    emitirBusca(){
+      this.$emit('mudarValorBusca', this.busca_ev)
+    }
+  }
 }
 </script>
 
