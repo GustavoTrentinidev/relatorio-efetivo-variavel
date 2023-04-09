@@ -20,8 +20,8 @@ export default {
     data(){
       return {
         evs: [],
-        modalAberto: false,
-        idFichaEvSelecionado: 0
+        modalAberto: true, //ALTERAR PARA FALSE
+        idFichaEvSelecionado: 1 //ALTERAR PARA 0
       }
     },
     mounted(){
