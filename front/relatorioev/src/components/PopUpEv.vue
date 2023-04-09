@@ -52,7 +52,7 @@
                 </div>
                 <div class="text-field row-text-field">
                     <div class="label">Grau Hierárquico</div>
-                    <div>{{ficha.ev.grau_hieq}}</div>
+                    <div v-if="ficha.ev">{{ficha.ev.grau_hieq}}</div>
                 </div>
             </div>
             <div class="row">
@@ -71,7 +71,7 @@
             <div class="fato-observado" v-for="fo in ficha.fo" :key="fo.id">
                 <FatoObservado :id="fo.id"/>
             </div>
-                <div class="add-btn">Adicionar FO</div>
+                <AdicionarFO :fichaID="ficha.id"/>
         </div>
     </div>
   </div>
@@ -80,12 +80,13 @@
 <script>
 import { api } from '@/plugins/axios'
 import FatoObservado from '@/components/FatoObservado.vue' 
+import AdicionarFO from '@/components/AdicionarFO.vue' 
 export default {
-    components: {FatoObservado},
+    components: {FatoObservado, AdicionarFO},
     data(){
         return{
             ficha: {},
-            cpf: ''
+            cpf: '',
         }
     },
     props: ['modalAberto', 'evFichaID'],
@@ -234,15 +235,6 @@ export default {
     display: flex;
     flex-direction: column;
     position: relative;
-}
-.add-btn{
-    background-color: #33b249;
-    color: #fff;
-    font-size: 1.1rem;
-    border-radius: 3px;
-    padding: 5px;
-    margin: 15px;
-    cursor: pointer;
 }
 
 @media only screen and (min-device-width: 390px) and (max-device-width: 844px) {

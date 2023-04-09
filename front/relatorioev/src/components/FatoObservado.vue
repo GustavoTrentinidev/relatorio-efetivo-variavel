@@ -17,7 +17,7 @@
             {{fo.descricao}}
         </div>
     </div>
-    <div class="aplicador">
+    <div v-if="fo.aplicador" class="aplicador">
         <div>Aplicado por: {{fo.aplicador.grau_hieq}} {{fo.aplicador.nome_guerra}}</div>
         <div>{{fo.aplicador.om}}</div>
     </div>
