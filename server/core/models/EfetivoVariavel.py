@@ -12,7 +12,8 @@ class EfetivoVariavel(models.Model):
     nome_mae = models.CharField(max_length=200, blank=False) 
     nome_pai = models.CharField(max_length=200, blank=False) 
     local_nascimento = models.CharField(max_length=100, blank=False)
-    foto = models.FileField(upload_to='efetivovariavel', blank=True)
+    data_nascimento = models.DateField(blank=True, null=True)
+    foto = models.FileField(upload_to='efetivovariavel', blank=True, null=True)
 
     def __str__(self):
         return self.nome_guerra

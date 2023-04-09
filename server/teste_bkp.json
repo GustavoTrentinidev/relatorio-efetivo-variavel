@@ -1,0 +1,27 @@
+[
+{
+    "model": "core.efetivovariavel",
+    "pk": 1,
+    "fields": {
+      "nome_guerra": "Trentini",
+      "numero": 750,
+      "cpf": "06339421970",
+      "om": "3CIA",
+      "nome_completo": "Gustavo Henrique Trentini",
+      "tipo_sanguineo": "A+",
+      "grau_hieq": "SD",
+      "nome_mae": "Rosane Bender Trentini",
+      "nome_pai": "Gerson Gilberto Trentini",
+      "local_nascimento": "Joinville, SC",
+      "data_nascimento": "2004-09-20",
+      "foto": "efetivovariavel/9529c7d4-8182-43f7-89a4-68a44835e015.jpg"
+    }
+},
+{
+    "model": "core.ficha",
+    "pk": 1,
+    "fields": {
+      "ev": 1
+    }
+}
+]

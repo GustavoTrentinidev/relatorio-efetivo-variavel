@@ -1,6 +1,7 @@
 <template>
     <div class="add-fo">
         <div class="form-add-fo" v-show="addFO">
+            <div class="add-title">Adicione um Fato Observado</div>
             <div class="inputs-cima">
                 <div class="field">
                     <div class="label">Fator</div>
@@ -63,7 +64,7 @@ export default {
 .add-btn{
     background-color: #33b249;
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1rem;
     border-radius: 3px;
     padding: 5px;
     margin: 15px 0 15px 0;
@@ -85,6 +86,11 @@ export default {
     flex-direction: column;
     gap: 15px;
     width: 100%;
+}
+.add-title{
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 .field{
     position: relative;

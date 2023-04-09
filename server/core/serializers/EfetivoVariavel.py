@@ -18,6 +18,7 @@ class EfetivoVariavelSerializer(ModelSerializer):
             "nome_mae",
             "nome_pai",
             "local_nascimento",
+            "data_nascimento",
             "foto",
             "ficha"
         )
