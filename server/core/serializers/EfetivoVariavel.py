@@ -20,10 +20,28 @@ class EfetivoVariavelSerializer(ModelSerializer):
             "local_nascimento",
             "data_nascimento",
             "foto",
-            "ficha"
         )
 
     def create(self, validated_data):
         efetivoev = EfetivoVariavel.objects.create(**validated_data)
         Ficha.objects.create(ev=efetivoev)
         return efetivoev
+
+class EfetivoVariavelGetSerializer(ModelSerializer):
+    class Meta:
+        model = EfetivoVariavel
+        fields = (
+            "nome_guerra",
+            "numero",
+            "cpf",
+            "om",
+            "nome_completo",
+            "tipo_sanguineo",
+            "grau_hieq",
+            "nome_mae",
+            "nome_pai",
+            "local_nascimento",
+            "data_nascimento",
+            "foto",
+            "ficha"
+        )

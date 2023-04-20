@@ -1,29 +1,28 @@
 <template>
     <div class="add-fo">
-        <div class="form-add-fo" v-show="addFO">
-            <div class="add-title">Adicione um Fato Observado</div>
+        <div class="form-add-fo" v-show="addFATD">
+            <div class="add-title">Adicione uma FATD</div>
             <div class="inputs-cima">
                 <div class="field">
-                    <div class="label">Fator</div>
-                    <select class="fator-input" v-model="fo.fator">
-                        <option value="Positivo">Positivo</option>
-                        <option value="Negativo">Negativo</option>
+                    <div class="label">Punição</div>
+                    <select class="fator-input" v-model="fatd.punicao">
+                        <option value="Advertência">Advertência</option>
+                        <option value="Repreensão">Repreensão</option>
+                        <option value="Detenção">Detenção</option>
+                        <option value="Prisão">Prisão</option>
+                        <option value="Exclusão a bem da disciplina">Exclusão a bem da disciplina</option>
                     </select>
                 </div>
                 <div class="field motivo">
-                    <div class="label">Motivo</div>
-                    <input type="text" v-model="fo.motivo" class="motivo-input" placeholder="Motivo">
+                    <div class="label">Descrição</div>
+                    <textarea v-model="fatd.descricao" class="motivo-input"> </textarea>
                 </div>
-            </div>
-            <div class="field desc">
-                <div class="label">Descrição</div>
-                <input type="text" v-model="fo.descricao" class="desc-input" placeholder="Descrição">
             </div>
         </div>
         <div class="fo-action-btns">
-            <div class="add-btn" v-if="!addFO" @click="addFO = true">Adicionar FO</div>
-            <div class="add-btn cadastrar-btn" v-if="addFO" @click="addFO = true">Cadastrar FO</div>
-            <div class="add-btn cancel-btn" @click="cancelar" v-if="addFO">Cancelar</div>
+            <div class="add-btn" v-if="!addFATD" @click="addFATD = true">Adicionar FATD</div>
+            <div class="add-btn cadastrar-btn" v-if="addFATD" @click="addFATD = true">Cadastrar FATD</div>
+            <div class="add-btn cancel-btn" @click="cancelar" v-if="addFATD">Cancelar</div>
         </div>
     </div>
 </template>
@@ -33,20 +32,20 @@ export default {
     props: ['fichaID'],
     data(){
         return{
-            addFO: false,
-            fo: {
-                fator: 'Positivo',
+            addFATD: false,
+            fatd: {
+                punicao: 'Advertência',
                 ficha: this.fichaID
             },
         }
     },
     methods:{
         cancelar(){
-            this.fo = {
-                    fator: 'Positivo',
+            this.fatd = {
+                    punicao: 'Advertência',
                     ficha: this.fichaID
                 }
-            this.addFO = false
+            this.addFATD = false
         }
     }
 
@@ -105,18 +104,18 @@ export default {
 }
 .inputs-cima{
     display: flex;
+    flex-direction: column;
     gap: 15px;
 }
-.fator-input, .motivo-input, .desc-input {
+.fator-input, .motivo-input {
     outline: 0;
     padding: 10px;
     font-size: 1rem;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .motivo, .motivo-input{
     width: calc(100% - 30px);
-}
-.desc, .desc-input{
-    width: calc(100% - 15px);
 }
 @media only screen and (min-device-width: 390px) and (max-device-width: 844px) {
     .inputs-cima{

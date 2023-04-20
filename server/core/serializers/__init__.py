@@ -1,5 +1,5 @@
 from .Aplicador import AplicadorSerializer
-from .EfetivoVariavel import EfetivoVariavelSerializer
+from .EfetivoVariavel import EfetivoVariavelSerializer, EfetivoVariavelGetSerializer
 from .Ficha import FichaSerializer
-from .FATD import FATDSerializer
+from .FATD import FATDViewSerializer, FATDPostSerializer
 from .FatoObservado import FatoObservadoSerializer

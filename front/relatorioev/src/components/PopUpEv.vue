@@ -42,7 +42,8 @@
                 </div>
                 <div class="text-field row-text-field">
                     <div class="label">Data de Nascimento</div>
-                    <div>ESSE DADO AINDA NAO EXISTE</div>
+                    <div v-if="ficha.ev.data_nascimento">{{ficha.ev.data_nascimento.split('-').reverse().join('/')}}</div>
+                    <div v-else>Não informado</div>
                 </div>
             </div>
             <div class="row">
@@ -65,13 +66,20 @@
                     <div>{{ficha.ev.tipo_sanguineo}}</div>
                 </div>
             </div>
-            <div class="titulo-secao">
+            <div class="titulo-secao titulo-fo">
                 Fatos Observados:
             </div>
             <div class="fato-observado" v-for="fo in ficha.fo" :key="fo.id">
                 <FatoObservado :id="fo.id"/>
             </div>
-                <AdicionarFO :fichaID="ficha.id"/>
+            <AdicionarFO :fichaID="ficha.id"/>
+            <div class="titulo-secao">
+                Formulários de Apuração de Transgressão Disciplinar:
+            </div>
+            <div class="fatd fato-observado" v-for="fatd in ficha.fatd" :key="fatd.descricao">
+                <FATD :id="fatd.id"/>
+            </div>
+            <AddFATD :fichaID="ficha.id"/>
         </div>
     </div>
   </div>
@@ -81,8 +89,10 @@
 import { api } from '@/plugins/axios'
 import FatoObservado from '@/components/FatoObservado.vue' 
 import AdicionarFO from '@/components/AdicionarFO.vue' 
+import FATD from '@/components/FATD.vue' 
+import AddFATD from '@/components/AddFATD.vue' 
 export default {
-    components: {FatoObservado, AdicionarFO},
+    components: {FatoObservado, AdicionarFO, FATD, AddFATD},
     data(){
         return{
             ficha: {},
@@ -180,8 +190,10 @@ export default {
 }
 .image-ev{
     height: 70px;
-    border: 1px red solid;
     width: 50px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px;
 }
 .ficha-info{
     padding-top: 25px;
@@ -202,9 +214,11 @@ export default {
     justify-content: space-around;
     margin-top: 15px;
 }
-.titulo-secao:not(:first-child){
+
+.titulo-fo {
     margin-top: 15px;
 }
+
 .text-field{
     position: relative;
     display: flex;
