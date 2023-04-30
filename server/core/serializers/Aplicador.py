@@ -6,6 +6,7 @@ class AplicadorSerializer(ModelSerializer):
     class Meta:
         model = Aplicador
         fields = (
+                "id",
                 "nome_guerra",
                 "numero",
                 "om",

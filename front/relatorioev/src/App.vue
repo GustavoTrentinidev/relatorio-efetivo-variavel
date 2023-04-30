@@ -8,8 +8,13 @@
 </template>
 <script>
 import LogoRelatorio from '@/components/LogoRelatorio'
+import {tokenChange} from "@/plugins/axios.js" 
+
 
 export default {
+  beforeCreate(){
+    tokenChange()
+  },
   components: {LogoRelatorio}
 }
 </script>

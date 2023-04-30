@@ -7,3 +7,8 @@ class FatoObservadoSerializer(ModelSerializer):
     class Meta:
         model = FatoObservado
         fields = "__all__"
+
+class FOPostSerializer(ModelSerializer):
+    class Meta:
+        model = FatoObservado
+        fields = "__all__"

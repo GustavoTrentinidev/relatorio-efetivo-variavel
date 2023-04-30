@@ -72,14 +72,14 @@
             <div class="fato-observado" v-for="fo in ficha.fo" :key="fo.id">
                 <FatoObservado :id="fo.id"/>
             </div>
-            <AdicionarFO :fichaID="ficha.id"/>
+            <AdicionarFO @focadastrado='getFichaEvSelecionado' :fichaID="ficha.id"/>
             <div class="titulo-secao">
                 Formulários de Apuração de Transgressão Disciplinar:
             </div>
             <div class="fatd fato-observado" v-for="fatd in ficha.fatd" :key="fatd.descricao">
                 <FATD :id="fatd.id"/>
             </div>
-            <AddFATD :fichaID="ficha.id"/>
+            <AddFATD @fatdcadastrada='getFichaEvSelecionado' :fichaID="ficha.id"/>
         </div>
     </div>
   </div>

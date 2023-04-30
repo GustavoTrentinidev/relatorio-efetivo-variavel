@@ -21,14 +21,27 @@
         </div>
         <div class="fo-action-btns">
             <div class="add-btn" v-if="!addFATD" @click="addFATD = true">Adicionar FATD</div>
-            <div class="add-btn cadastrar-btn" v-if="addFATD" @click="addFATD = true">Cadastrar FATD</div>
+            <div class="add-btn cadastrar-btn" v-if="addFATD" @click="cadastrar">Cadastrar FATD</div>
             <div class="add-btn cancel-btn" @click="cancelar" v-if="addFATD">Cancelar</div>
         </div>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { api } from '@/plugins/axios'
 export default {
+    computed:{
+        ...mapState('aplicador', ['aplicador_dados'])
+    },
+    watch: {
+        fichaID(){
+            this.fatd.ficha = this.fichaID
+        }
+    },
+    mounted(){
+        this.fatd.aplicador = this.aplicador_dados.id
+    },
     props: ['fichaID'],
     data(){
         return{
@@ -43,9 +56,15 @@ export default {
         cancelar(){
             this.fatd = {
                     punicao: 'Advertência',
-                    ficha: this.fichaID
+                    ficha: this.fichaID,
+                    aplicador: this.aplicador_dados.id
                 }
             this.addFATD = false
+        },
+        async cadastrar(){
+            await api.post('fatd/', this.fatd)
+            this.cancelar()
+            this.$emit('fatdcadastrada')
         }
     }
 

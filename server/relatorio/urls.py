@@ -3,7 +3,7 @@ from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
 
-from core.views import AplicadorViewSet, EfetivoVariavelViewSet, FichaViewSet, FATDViewSet, FatoObservadoViewSet
+from core.views import AplicadorViewSet, EfetivoVariavelViewSet, FichaViewSet, FATDViewSet, FatoObservadoViewSet, userDetail
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -17,6 +17,7 @@ router.register(r"efetivovariavel", EfetivoVariavelViewSet)
 router.register(r"ficha", FichaViewSet)
 router.register(r"fatd", FATDViewSet)
 router.register(r"fo", FatoObservadoViewSet)
+router.register(r"user-detail", userDetail, basename="detail")
 
 urlpatterns = [
     path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),

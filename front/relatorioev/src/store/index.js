@@ -10,10 +10,12 @@ const vuexLocal = new VuexPersistence({
 })
 
 import { auth } from "./auth"
+import { aplicador } from "./aplicador"
 
 
 const modules = {
     auth,
+    aplicador
 }
 
 export default new Vuex.Store({

@@ -5,10 +5,7 @@
       <EvResultado :efetivos="evs" @botaoClicado="abrirModalAction"/>
     </div>
     <PopUpEv :modalAberto="modalAberto" @fecharModal="fecharModalAction" :evFichaID="idFichaEvSelecionado"/>
-    <div class="logout">
-      <div>sgtivan</div>
-      <div @click="setLogout">Logout</div>
-    </div>
+    <LogoutComponent/>
   </div>
 </template>
 
@@ -17,11 +14,11 @@ import { api } from "@/plugins/axios"
 import InputPesquisa from '../components/InputPesquisa.vue'
 import EvResultado from '../components/EvResultado.vue'
 import PopUpEv from '../components/PopUpEv.vue'
-import { mapMutations } from 'vuex'
+import LogoutComponent from '../components/LogoutComponent.vue'
 
 
 export default {
-    components: {InputPesquisa, EvResultado, PopUpEv},
+    components: {InputPesquisa, EvResultado, PopUpEv, LogoutComponent},
     data(){
       return {
         evs: [],
@@ -33,7 +30,6 @@ export default {
       this.getEv()
     },
     methods: {
-      ...mapMutations('auth', ['setLogout']),
       async getEv(valor=''){
         const {data} = await api.get(`efetivovariavel/?search=${valor}`)
         this.evs = data

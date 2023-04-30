@@ -22,21 +22,34 @@
         </div>
         <div class="fo-action-btns">
             <div class="add-btn" v-if="!addFO" @click="addFO = true">Adicionar FO</div>
-            <div class="add-btn cadastrar-btn" v-if="addFO" @click="addFO = true">Cadastrar FO</div>
+            <div class="add-btn cadastrar-btn" v-if="addFO" @click="cadastrar">Cadastrar FO</div>
             <div class="add-btn cancel-btn" @click="cancelar" v-if="addFO">Cancelar</div>
         </div>
     </div>
 </template>
 
 <script>
+import { api } from "@/plugins/axios"
+import { mapState } from 'vuex'
 export default {
+    watch:{
+        fichaID(){
+            this.fo.ficha = this.fichaID
+        }
+    },
+    computed: {
+        ...mapState('aplicador', ['aplicador_dados']),
+    },
+    mounted(){
+        this.fo.aplicador = this.aplicador_dados.id
+    },
     props: ['fichaID'],
     data(){
         return{
             addFO: false,
             fo: {
                 fator: 'Positivo',
-                ficha: this.fichaID
+                ficha: this.fichaID,
             },
         }
     },
@@ -44,9 +57,15 @@ export default {
         cancelar(){
             this.fo = {
                     fator: 'Positivo',
-                    ficha: this.fichaID
+                    ficha: this.fichaID,
+                    aplicador: this.aplicador_dados.id
                 }
             this.addFO = false
+        },
+        async cadastrar(){
+            await api.post('fo/', this.fo)
+            this.$emit('focadastrado')
+            this.cancelar()
         }
     }
 

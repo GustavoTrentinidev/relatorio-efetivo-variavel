@@ -76,8 +76,8 @@ export default {
         }
         catch(e){
           console.log(e)
-          const propertys = ['username', 'password', 'numero', 'nome_completo', 'nome_guerra', 'grau_hieq', 'om']
-          for(let p of propertys){
+          const properties = ['username', 'password', 'numero', 'nome_completo', 'nome_guerra', 'grau_hieq', 'om']
+          for(let p of properties){
             if(e.response.data[p]){
               this.error = {
                   message: p + ': ' + e.response.data[p][0],
@@ -85,10 +85,9 @@ export default {
               }
             }
           }
-          
         }
-    }
-  }
+      }
+    } 
   }
 }
 </script>
