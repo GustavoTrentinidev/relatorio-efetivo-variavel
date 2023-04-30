@@ -1,33 +1,39 @@
 <template>
   <div>
     <div class="main">
-      <LogoRelatorioVue/>
       <InputPesquisa @mudarValorBusca="getComNovoValor"/>
       <EvResultado :efetivos="evs" @botaoClicado="abrirModalAction"/>
     </div>
     <PopUpEv :modalAberto="modalAberto" @fecharModal="fecharModalAction" :evFichaID="idFichaEvSelecionado"/>
+    <div class="logout">
+      <div>sgtivan</div>
+      <div @click="setLogout">Logout</div>
+    </div>
   </div>
 </template>
 
 <script>
 import { api } from "@/plugins/axios"
-import LogoRelatorioVue from '../components/LogoRelatorio.vue'
 import InputPesquisa from '../components/InputPesquisa.vue'
 import EvResultado from '../components/EvResultado.vue'
 import PopUpEv from '../components/PopUpEv.vue'
+import { mapMutations } from 'vuex'
+
+
 export default {
-    components: {LogoRelatorioVue, InputPesquisa, EvResultado, PopUpEv},
+    components: {InputPesquisa, EvResultado, PopUpEv},
     data(){
       return {
         evs: [],
-        modalAberto: true, //ALTERAR PARA FALSE
-        idFichaEvSelecionado: 1 //ALTERAR PARA 0
+        modalAberto: false,
+        idFichaEvSelecionado: 0
       }
     },
     mounted(){
       this.getEv()
     },
     methods: {
+      ...mapMutations('auth', ['setLogout']),
       async getEv(valor=''){
         const {data} = await api.get(`efetivovariavel/?search=${valor}`)
         this.evs = data
@@ -55,7 +61,4 @@ export default {
   margin: 30px;
   gap: 10px;
 }
-
-
-
 </style>

@@ -135,13 +135,6 @@ export default {
             }
         }
     },
-
-
-
-    // RETIRAR DEPOIS!!!!!
-    mounted(){
-        this.getFichaEvSelecionado()
-    }
 }
 </script>
 

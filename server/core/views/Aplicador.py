@@ -1,9 +1,12 @@
 from rest_framework.viewsets import ModelViewSet
 
 from core.models import Aplicador
-from core.serializers import AplicadorSerializer
+from core.serializers import AplicadorSerializer, AplicadorPostSerializer
 
 
 class AplicadorViewSet(ModelViewSet):
     queryset = Aplicador.objects.all()
-    serializer_class = AplicadorSerializer
+    def get_serializer_class(self):
+        if self.action in ["retrieve", "list"]:
+            return AplicadorSerializer
+        return AplicadorPostSerializer
