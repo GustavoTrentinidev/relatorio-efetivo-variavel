@@ -15,7 +15,7 @@ import InputPesquisa from '../components/InputPesquisa.vue'
 import EvResultado from '../components/EvResultado.vue'
 import PopUpEv from '../components/PopUpEv.vue'
 import LogoutComponent from '../components/LogoutComponent.vue'
-
+import { mapMutations } from "vuex"
 
 export default {
     components: {InputPesquisa, EvResultado, PopUpEv, LogoutComponent},
@@ -30,9 +30,18 @@ export default {
       this.getEv()
     },
     methods: {
+      ...mapMutations('auth', ['setLogout']),
       async getEv(valor=''){
-        const {data} = await api.get(`efetivovariavel/?search=${valor}`)
-        this.evs = data
+        try {
+          const {data} = await api.get(`efetivovariavel/?search=${valor}`)
+          this.evs = data
+        }
+        catch (e){
+          if (e.response.status == 401){
+            this.setLogout()
+            this.$router.push('/auth')
+          }
+        }
       },
       getComNovoValor(novoValor){
         this.getEv(novoValor)
